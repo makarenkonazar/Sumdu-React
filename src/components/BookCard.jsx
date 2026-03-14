@@ -1,4 +1,4 @@
-export default function BookCard({ book, isFavorite, onToggleFavorite }) {
+export default function BookCard({ book, isFavorite }) {
   return (
     <article className="book-card" role="listitem">
       <div className={`book-card__cover book-card__cover--${book.cover}`}>
@@ -22,7 +22,6 @@ export default function BookCard({ book, isFavorite, onToggleFavorite }) {
           <button
             className="book-card__action"
             type="button"
-            onClick={() => onToggleFavorite(book.id)}
           >
             {isFavorite ? 'В улюбленому' : 'Додати до улюбленого'}
           </button>

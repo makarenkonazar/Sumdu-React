@@ -1,8 +1,7 @@
-export default function Footer() {
-  const year = new Date().getFullYear();
+export default function Footer({ subtitle }) {
   return (
     <footer className="footer">
-      <small>Лабораторна робота №1</small>
+      <small>{subtitle}</small>
     </footer>
   );
 }

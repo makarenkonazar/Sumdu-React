@@ -1,7 +1,7 @@
 import FilterBar from './FilterBar.jsx';
 import BookList from './BookList.jsx';
 
-export default function Main() {
+export default function Main({ books }) {
   return (
     <main className="main">
       <section className="hero" aria-label="Огляд бібліотеки">
@@ -29,7 +29,7 @@ export default function Main() {
       <section className="panel">
         <h2 className="panel__title">Каталог бібліотеки</h2>
         <FilterBar />
-        <BookList />
+        <BookList books={books} />
       </section>
     </main>
   );

@@ -1,6 +1,6 @@
 export default function FilterBar() {
   return (
-    <form className="filter-bar" onSubmit={(event) => event.preventDefault()}>
+    <div className="filter-bar" role="group" aria-label="Фільтри бібліотеки">
       <label className="filter-bar__label" htmlFor="search">
         Пошук
       </label>
@@ -27,6 +27,6 @@ export default function FilterBar() {
       <button className="filter-bar__button" type="button">
         Сортувати: Рейтинг
       </button>
-    </form>
+    </div>
   );
 }
