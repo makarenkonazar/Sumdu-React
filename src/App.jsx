@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import Header from './components/Header.jsx';
 import Main from './components/Main.jsx';
 import Footer from './components/Footer.jsx';
 import './styles/App.css';
 
 export default function App() {
-  const books = [
+  const [books, setBooks] = useState([
     {
       id: 1,
       title: 'Гаррі Поттер і філософський камінь',
@@ -49,14 +50,22 @@ export default function App() {
       status: 'Прочитано',
       isFavorite: true,
     },
-  ];
+  ]);
+
+  const handleToggleFavorite = (bookId) => {
+    setBooks((prevBooks) =>
+      prevBooks.map((book) =>
+        book.id === bookId ? { ...book, isFavorite: !book.isFavorite } : book
+      )
+    );
+  };
 
   return (
     <>
       <div className="app">
         <Header />
-        <Main books={books} />
-        <Footer subtitle="Лабораторна робота №2" />
+        <Main books={books} onToggleFavorite={handleToggleFavorite} />
+        <Footer subtitle="Лабораторна робота №3" />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import BookCard from './BookCard.jsx';
 
-export default function BookList({ books }) {
+export default function BookList({ books, onToggleFavorite }) {
   return (
     <div className="book-list" role="list">
       {books.map((book) => (
@@ -8,6 +8,7 @@ export default function BookList({ books }) {
           key={book.id}
           book={book}
           isFavorite={book.isFavorite}
+          onToggleFavorite={onToggleFavorite}
         />
       ))}
     </div>

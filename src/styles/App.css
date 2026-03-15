@@ -186,6 +186,13 @@ body{
   transition:transform .2s ease, box-shadow .2s ease;
 }
 .book-card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(40,30,20,.16)}
+.book-card--favorite{
+  border-color:rgba(178,92,42,.6);
+  box-shadow:0 12px 28px rgba(178,92,42,.18);
+}
+.book-card--favorite .book-card__badge{
+  background:rgba(250,204,21,.35);
+}
 .book-card__cover{
   padding:16px;
   color:#fff;

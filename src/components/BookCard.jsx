@@ -1,6 +1,9 @@
-export default function BookCard({ book, isFavorite }) {
+export default function BookCard({ book, isFavorite, onToggleFavorite }) {
   return (
-    <article className="book-card" role="listitem">
+    <article
+      className={`book-card${isFavorite ? ' book-card--favorite' : ''}`}
+      role="listitem"
+    >
       <div className={`book-card__cover book-card__cover--${book.cover}`}>
         <span className="book-card__badge">{book.status}</span>
         <div className="book-card__title-mark">
@@ -22,6 +25,7 @@ export default function BookCard({ book, isFavorite }) {
           <button
             className="book-card__action"
             type="button"
+            onClick={() => onToggleFavorite(book.id)}
           >
             {isFavorite ? 'В улюбленому' : 'Додати до улюбленого'}
           </button>

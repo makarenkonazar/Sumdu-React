@@ -1,7 +1,11 @@
 import FilterBar from './FilterBar.jsx';
 import BookList from './BookList.jsx';
 
-export default function Main({ books }) {
+export default function Main({ books, onToggleFavorite }) {
+  const totalBooks = books.length;
+  const totalGenres = new Set(books.map((book) => book.genre)).size;
+  const totalFavorites = books.filter((book) => book.isFavorite).length;
+
   return (
     <main className="main">
       <section className="hero" aria-label="Огляд бібліотеки">
@@ -14,22 +18,22 @@ export default function Main({ books }) {
         <div className="hero__stats" role="list">
           <div className="stat" role="listitem">
             <span className="stat__label">Книги</span>
-            <span className="stat__value">12</span>
+            <span className="stat__value">{totalBooks}</span>
           </div>
           <div className="stat" role="listitem">
             <span className="stat__label">Жанри</span>
-            <span className="stat__value">6</span>
+            <span className="stat__value">{totalGenres}</span>
           </div>
           <div className="stat" role="listitem">
             <span className="stat__label">Улюблені</span>
-            <span className="stat__value">4</span>
+            <span className="stat__value">{totalFavorites}</span>
           </div>
         </div>
       </section>
       <section className="panel">
         <h2 className="panel__title">Каталог бібліотеки</h2>
         <FilterBar />
-        <BookList books={books} />
+        <BookList books={books} onToggleFavorite={onToggleFavorite} />
       </section>
     </main>
   );
