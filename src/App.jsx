@@ -50,7 +50,20 @@ export default function App() {
       status: 'Прочитано',
       isFavorite: true,
     },
+    {
+      id: 5,
+      title: 'Вбивство у «Східному експресі»',
+      author: 'Agatha Christie',
+      genre: 'Детектив',
+      year: 1934,
+      rating: 4.5,
+      cover: 'plum',
+      status: 'Хочу прочитати',
+      isFavorite: true,
+    },
   ]);
+  const [viewMode, setViewMode] = useState('all');
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
 
   const handleToggleFavorite = (bookId) => {
     setBooks((prevBooks) =>
@@ -64,8 +77,15 @@ export default function App() {
     <>
       <div className="app">
         <Header />
-        <Main books={books} onToggleFavorite={handleToggleFavorite} />
-        <Footer subtitle="Лабораторна робота №3" />
+        <Main
+          books={books}
+          viewMode={viewMode}
+          onToggleFavorite={handleToggleFavorite}
+          onChangeViewMode={setViewMode}
+          onlyFavorites={onlyFavorites}
+          onToggleOnlyFavorites={() => setOnlyFavorites((prev) => !prev)}
+        />
+        <Footer subtitle="Лабораторна робота №4" />
       </div>
     </>
   );

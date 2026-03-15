@@ -141,6 +141,28 @@ body{
   align-items:center;
   margin-bottom:18px;
 }
+.filter-bar__modes{
+  display:flex;
+  gap:8px;
+  padding:6px;
+  border-radius:999px;
+  background:rgba(47,111,109,.08);
+  border:1px solid rgba(47,111,109,.18);
+}
+.filter-bar__mode{
+  padding:8px 14px;
+  border-radius:999px;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-weight:700;
+  cursor:pointer;
+}
+.filter-bar__mode--active{
+  background:#fff;
+  color:var(--ink);
+  box-shadow:var(--shadow);
+}
 .filter-bar__label{display:none}
 .filter-bar__input,
 .filter-bar__select{
@@ -170,10 +192,20 @@ body{
   cursor:pointer;
 }
 
+.empty-state{
+  padding:18px;
+  border-radius:12px;
+  border:1px dashed var(--border);
+  color:var(--muted);
+  text-align:center;
+  background:rgba(255,255,255,.7);
+}
+
 .book-list{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fill, 234px);
+  gap:10px;
+  justify-content:start;
 }
 .book-card{
   background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(250,246,240,.95));

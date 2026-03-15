@@ -1,10 +1,32 @@
 import FilterBar from './FilterBar.jsx';
 import BookList from './BookList.jsx';
 
-export default function Main({ books, onToggleFavorite }) {
+export default function Main({
+  books,
+  viewMode,
+  onToggleFavorite,
+  onChangeViewMode,
+  onlyFavorites,
+  onToggleOnlyFavorites,
+}) {
   const totalBooks = books.length;
   const totalGenres = new Set(books.map((book) => book.genre)).size;
   const totalFavorites = books.filter((book) => book.isFavorite).length;
+  const filteredBooks = books.filter((book) => {
+    if (onlyFavorites && !book.isFavorite) {
+      return false;
+    }
+    if (viewMode === 'reading') {
+      return book.status === 'Читаю';
+    }
+    if (viewMode === 'want') {
+      return book.status === 'Хочу прочитати';
+    }
+    if (viewMode === 'read') {
+      return book.status === 'Прочитано';
+    }
+    return true;
+  });
 
   return (
     <main className="main">
@@ -32,8 +54,13 @@ export default function Main({ books, onToggleFavorite }) {
       </section>
       <section className="panel">
         <h2 className="panel__title">Каталог бібліотеки</h2>
-        <FilterBar />
-        <BookList books={books} onToggleFavorite={onToggleFavorite} />
+        <FilterBar
+          viewMode={viewMode}
+          onChangeViewMode={onChangeViewMode}
+          onlyFavorites={onlyFavorites}
+          onToggleOnlyFavorites={onToggleOnlyFavorites}
+        />
+        <BookList books={filteredBooks} onToggleFavorite={onToggleFavorite} />
       </section>
     </main>
   );
